@@ -69,3 +69,45 @@ contract Primitives {
 
 }
 
+
+
+// Variables
+// 3 types:
+// local - declared inside a function, not stored on blockchain
+// states - declared outside a function, stored on the blockchain
+//global - provides information about the blockchain
+
+
+
+contract Variables {
+
+    //stored on the blockchain
+    string public text = "Hello";
+    uint256 public num = 123;
+    
+    function doSomething() public{
+        // local variables are not saved to the blockchain
+        uint i = 1;
+
+
+        uint timestamp = block.timestamp; // current block timestamp
+        address sender = msg.sender; // address of the caller
+    }
+}
+
+contract Constants {
+
+    // variables that cannot be modified
+    //value is hard coded, can save gas cost
+    // for constants the convention is all uppercase
+    
+
+    address public constant MY_ADDRESS = 0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc;
+
+    uint public constant MY_UINT = 123;
+
+}
+
+
+
+
