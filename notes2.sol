@@ -114,7 +114,64 @@ contract ArrayReplaceFromEnd {
 }
 
 
+// Solidity supports enumerables and they are useful to model choice and 
+//keep track of state
+// can be declared outside of a contract
+
+contract Enum {
+    enum Status {
+        Pending,
+        Shipped, 
+        Accepted,
+        Rejected,
+        Canceled
+    }
 
 
 
+// default value is the first element listed in definition
+//in this case uint
+
+Status public status;
+
+function get() public view returns (Status){
+    return status;
+}
+
+// update status by passing uint into input
+function set(Status _status) public {
+    status = _status;
+}
+
+// update to a specific enum like this
+function cancel() public {
+    status = Status.Canceled;
+}
+
+//resets the enum to its first value, 0
+function reset() public{
+    delete status;
+}
+
+
+
+
+
+}
+
+
+import "./EnumDeclaration.sol";
+// imports the enum from enumDeclaration.
+contract Enum2{
+    Status public status;
+}
+
+
+
+
+// Structs 
+
+// you can define your own type by creating a struct
+
+//they are useful for grouping together related data
 
