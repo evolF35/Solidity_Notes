@@ -48,8 +48,53 @@ contract Todos {
         todo.completed = !todo.completed;
     }
 
-
 }
 
+
+// Variables are declared either as storage, memory, or calldata
+
+// storage == state variable, stored on the blockchain
+// memory == variable is in memory, exists while the function is being called
+// calldata == special data location that contains the function arguements
+
+
+contract DataLocations {
+    
+    uint[] public arr;
+    mapping(uint => address) map;
+    struct MyStruct {
+        uint foo;
+    }
+
+    mapping(uint => MyStruct) myStructs;
+
+    function f() public {
+        _f(arr,map,myStructs[1]);
+        
+        MyStruct storage MyStruct = myStructs[1];
+
+        MyStruct memory myMemStruct = MyStruct(0);
+    }
+
+    function _f( uint[] storage _arr, mapping(uint => address) 
+    storage _map, MyStruct storage _myStruct) internal {
+
+    }
+
+    function g(uint[] memory _arr) public returns (uint[] memory) {
+
+    }
+
+
+    function h(uint[] calldata _arr) external {
+        
+    }
+
+
+
+
+
+
+}
 
 
